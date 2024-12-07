@@ -49,6 +49,7 @@
 | - | - | - |
 | [![SC2 Video](https://img.youtube.com/vi/KhYiaEOrw7Q/0.jpg)](https://www.youtube.com/watch?v=KhYiaEOrw7Q) | [![SC2 Video](https://img.youtube.com/vi/igaVS0S1hA4/0.jpg)](https://www.youtube.com/watch?v=igaVS0S1hA4) | [![SC2 Video](https://img.youtube.com/vi/yx5Zbcwa9Z4/0.jpg)](https://www.youtube.com/watch?v=yx5Zbcwa9Z4) |
 
+
 ### RabbitMQ docker
 
     cmd:\> docker run -it --rm --name local-rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3.9-management

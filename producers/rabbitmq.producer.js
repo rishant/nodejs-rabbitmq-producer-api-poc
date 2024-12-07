@@ -13,22 +13,22 @@ class RabbitMQProducer {
 
             switch (message.exchangeType) {
                 case ExchangeTypes.DIRECT:
-                    await channel.assertExchange(message.exchange, ExchangeTypes.DIRECT, { durable: false });
+                    await channel.assertExchange(message.exchange, ExchangeTypes.DIRECT, { durable: true });
                     await channel.publish(message.exchange, message.routingKey, Buffer.from(message.content));
                     console.log(`Sent message to direct exchange ${message.exchange} with routing key ${message.routingKey}`);
                     break;
                 case ExchangeTypes.FANOUT:
-                    await channel.assertExchange(message.exchange, ExchangeTypes.FANOUT, { durable: false });
+                    await channel.assertExchange(message.exchange, ExchangeTypes.FANOUT, { durable: true });
                     await channel.publish(message.exchange, '', Buffer.from(message.content));
                     console.log(`Sent message to fanout exchange ${message.exchange}`);
                     break;
                 case ExchangeTypes.TOPIC:
-                    await channel.assertExchange(message.exchange, ExchangeTypes.TOPIC, { durable: false });
+                    await channel.assertExchange(message.exchange, ExchangeTypes.TOPIC, { durable: true });
                     await channel.publish(message.exchange, message.routingKey, Buffer.from(message.content));
                     console.log(`Sent message to topic exchange ${message.exchange} with routing key ${message.routingKey}`);
                     break;
                 case ExchangeTypes.HEADERS:
-                    await channel.assertExchange(message.exchange, ExchangeTypes.HEADERS, { durable: false });
+                    await channel.assertExchange(message.exchange, ExchangeTypes.HEADERS, { durable: true });
                     await channel.publish(message.exchange, '', Buffer.from(message.content), {headers: message.headers});
                     console.log(`Sent message to header exchange ${message.exchange}`);
                     break;

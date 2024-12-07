@@ -4,6 +4,8 @@ exports.publisherMessage = async (req, res) => {
     let { exchange, exchangeType, routingKey, headers, queue, payload } = req.body;
   
     try {
+      payload['publisher_timestamp'] = new Date();
+
       let message = {
         exchange: exchange,
         exchangeType: exchangeType,
@@ -12,6 +14,7 @@ exports.publisherMessage = async (req, res) => {
         queue: queue,
         content: JSON.stringify(payload)
       };
+      
       let rabbitMQProducer = new RabbitMQProducer();
       await rabbitMQProducer.sendMessage(message);
       res.status(200).json(`Message sent`);
